@@ -16,6 +16,7 @@ void showMenu()
 	cout << "*****6.清空联系人*****" << endl;
 	cout << "*****0.退出通讯录*****" << endl;
 	cout << "**********************" << endl;
+
 }
 
 int main()
