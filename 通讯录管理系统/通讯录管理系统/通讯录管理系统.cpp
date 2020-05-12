@@ -44,9 +44,65 @@ void showMenu()
 	cout << "**********************" << endl;
 
 }
+//添加联系人
+void addPerson(Addressbooks *abs)
+{
+	//判断通讯录是否满了，满了就不再添加了
+	if (abs->m_Size == MAX)
+	{
+		cout << "通讯录已满，无法添加" << endl;
+		return;
+	}
+	//添加姓名
+	string name;
+	cout << "请输入姓名: " << endl;
+	cin >> name;
+	abs->personArray[abs->m_Size].m_Name = name;
 
+	cout << "请输入性别：" << endl;
+	cout << "1------男" << endl;
+	cout << "2------女" << endl;
+	int sex = 0;
+	while (true)
+	{
+		//如果输入的是1或者2可以退出循环，因为输入的是正确值
+		//输入有误，重新输入
+		cin >> sex;
+		if (sex == 1 || sex == 2)
+		{
+			abs->personArray[abs->m_Size].n_Sex = sex;
+			break;
+		}
+		
+	}
+
+	cout << "请输入年龄：" << endl;
+	int age;
+	cin >> age;
+	abs->personArray[abs->m_Size].m_Age = age;
+
+	cout << "请输入电话：" << endl;
+	string phone;
+	cin >> phone;
+	abs->personArray[abs->m_Size].m_Phone = phone;
+
+	cout << "请输入地址：" << endl;
+	string addr;
+	cin >> addr;
+	abs->personArray[abs->m_Size].m_Addr = addr;
+	abs->m_Size++;
+	cout << "添加成功" << endl;
+
+	system("cls");
+
+
+}
 int main()
 {
+	//创建通讯录的结构体变量
+	Addressbooks abs;
+	//初始话通讯录中当前人数个数
+	abs.m_Size = 0;
 	//菜单的调用
 	int select;
 	while (true)
@@ -57,6 +113,7 @@ int main()
 		switch (select)
 		{
 		case 1://添加
+			addPerson(&abs);
 			break;
 		case 2://显示
 			break;
