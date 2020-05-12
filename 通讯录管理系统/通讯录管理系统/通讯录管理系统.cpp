@@ -111,12 +111,12 @@ void showPerson(Addressbooks *abs)
 	}
 	for (int i = 0; i < abs->m_Size; i++)
 	{
-		cout << "姓名:" << abs->personArray[i].m_Name << endl;
-		cout << "年龄:" << abs->personArray[i].m_Age << endl;
-		cout << "性别:" << abs->personArray[i].n_Sex << endl;
-		cout << "电话:" << abs->personArray[i].m_Phone << endl;
-		cout << "地址:" << abs->personArray[i].m_Addr<< endl;
-		cout << "-------------------------" << endl;
+		cout << "姓名:" << abs->personArray[i].m_Name << "\t";
+		cout << "年龄:" << (abs->personArray[i].m_Age==1?"男":"女") << "\t";
+		cout << "性别:" << abs->personArray[i].n_Sex << "\t";
+		cout << "电话:" << abs->personArray[i].m_Phone << "\t";
+		cout << "地址:" << abs->personArray[i].m_Addr<<endl;
+		//cout << "-------------------------" << endl;
 	}
 	system("pause");
 	system("cls");
