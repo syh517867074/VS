@@ -97,6 +97,30 @@ void addPerson(Addressbooks *abs)
 
 
 }
+
+
+//显示所有的联系人
+void showPerson(Addressbooks *abs)
+{
+	//判断通讯录中人数是否为0，如果为0，提示记录为空
+	//如果不为0，显示记录的联系人信息
+	if (abs->m_Size == 0)
+	{
+		cout << "当前记录为空" << endl;
+		return;
+	}
+	for (int i = 0; i < abs->m_Size; i++)
+	{
+		cout << "姓名:" << abs->personArray[i].m_Name << endl;
+		cout << "年龄:" << abs->personArray[i].m_Age << endl;
+		cout << "性别:" << abs->personArray[i].n_Sex << endl;
+		cout << "电话:" << abs->personArray[i].m_Phone << endl;
+		cout << "地址:" << abs->personArray[i].m_Addr<< endl;
+		cout << "-------------------------" << endl;
+	}
+	system("pause");
+	system("cls");
+}
 int main()
 {
 	//创建通讯录的结构体变量
@@ -116,6 +140,7 @@ int main()
 			addPerson(&abs);
 			break;
 		case 2://显示
+			showPerson(&abs);
 			break;
 		case 3://删除
 			break;
