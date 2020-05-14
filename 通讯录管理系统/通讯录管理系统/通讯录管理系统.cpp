@@ -182,6 +182,62 @@ void findPerson(Addressbooks *abs)
 	system("pause");
 	system("cls");
 }
+//修改联系人
+void modifyPerson(Addressbooks *abs)
+{
+	cout << "请输入要修改的联系人" << endl;
+	string name;
+	cin >> name;
+	int ret = isExist(abs, name);
+	if (ret != -1)
+	{
+		//添加姓名
+		string name;
+		cout << "请输入姓名: " << endl;
+		cin >> name;
+		abs->personArray[ret].m_Name = name;
+
+		cout << "请输入性别：" << endl;
+		cout << "1------男" << endl;
+		cout << "2------女" << endl;
+		int sex = 0;
+		while (true)
+		{
+			//如果输入的是1或者2可以退出循环，因为输入的是正确值
+			//输入有误，重新输入
+			cin >> sex;
+			if (sex == 1 || sex == 2)
+			{
+				abs->personArray[ret].n_Sex = sex;
+				break;
+			}
+
+		}
+
+		cout << "请输入年龄：" << endl;
+		int age;
+		cin >> age;
+		abs->personArray[ret].m_Age = age;
+
+		cout << "请输入电话：" << endl;
+		string phone;
+		cin >> phone;
+		abs->personArray[ret].m_Phone = phone;
+
+		cout << "请输入地址：" << endl;
+		string addr;
+		cin >> addr;
+		abs->personArray[ret].m_Addr = addr;
+
+		cout << "修改成功" << endl;
+	}
+	else
+	{
+		cout << "查无此人" << endl;
+	}
+	system("pause");
+	system("cls");
+}
 int main()
 {
 	//创建通讯录的结构体变量
@@ -210,6 +266,7 @@ int main()
 			findPerson(&abs);
 			break;
 		case 5://修改
+			modifyPerson(&abs);
 			break;
 		case 6://清空
 			break;
