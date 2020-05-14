@@ -107,6 +107,8 @@ void showPerson(Addressbooks *abs)
 	if (abs->m_Size == 0)
 	{
 		cout << "当前记录为空" << endl;
+		system("pause");
+		system("cls");
 		return;
 	}
 	for (int i = 0; i < abs->m_Size; i++)
@@ -117,6 +119,42 @@ void showPerson(Addressbooks *abs)
 		cout << "电话:" << abs->personArray[i].m_Phone << "\t";
 		cout << "地址:" << abs->personArray[i].m_Addr<<endl;
 		//cout << "-------------------------" << endl;
+	}
+	system("pause");
+	system("cls");
+}
+
+int isExist(Addressbooks*abs, string name)
+{
+	for (int i = 0; i < abs->m_Size; i++)
+	{
+		if (abs->personArray[i].m_Name == name)
+		{
+			return i;//找到了返回对应的数组下标结果
+		}
+	}
+	return -1;
+}
+//删除联系人
+void deletePerson(Addressbooks *abs)
+{
+	cout << "请输入要删除的联系人" << endl;
+	string name;
+	cin >> name;
+	int ret = isExist(abs,name);
+	if (ret != -1)
+	{
+		for (int i = ret; i < abs->m_Size; i++)
+		{
+			//数据前移
+			abs->personArray[i] = abs->personArray[i + 1];
+		}
+		abs->m_Size--;
+		cout << "删除成功" << endl;
+	}
+	else
+	{
+		cout << "查无此人" << endl;
 	}
 	system("pause");
 	system("cls");
@@ -143,6 +181,7 @@ int main()
 			showPerson(&abs);
 			break;
 		case 3://删除
+			deletePerson(&abs);
 			break;
 		case 4://查找
 			break;
