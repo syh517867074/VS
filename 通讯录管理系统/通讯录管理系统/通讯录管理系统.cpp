@@ -238,6 +238,25 @@ void modifyPerson(Addressbooks *abs)
 	system("pause");
 	system("cls");
 }
+void clearPerson(Addressbooks *abs)
+{
+	cout << "是否需要清空" << endl;
+	cout << "1.是  2.否" << endl;
+	int num;
+	cin >> num;
+	if (num == 1)
+	{
+		abs->m_Size = 0;
+		cout << "通讯录已清空" << endl;
+	}
+	else
+	{
+		cout << "已放弃" << endl;
+	}
+	
+	system("pause");
+	system("cls");
+}
 int main()
 {
 	//创建通讯录的结构体变量
@@ -269,6 +288,7 @@ int main()
 			modifyPerson(&abs);
 			break;
 		case 6://清空
+			clearPerson(&abs);
 			break;
 		case 0://退出
 			cout << "欢迎下次使用" << endl;
